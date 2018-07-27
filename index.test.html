@@ -1,0 +1,89 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script> -->
+</head>
+<body>
+
+    <h1>Psychic Game</h1>
+    <div id="Score">
+        <div id="Wins">
+            <p> WINS:</p> <p id="winCount"></p>
+        </div>
+        <div id="Losses">
+            <p> LOSSES:</p> <p id="lossCount"></p>
+        </div>
+
+        <div id="Chosen">
+                <p>Chosen</p>        <p id="chosenLetters"> </p>
+        </div>
+    </div>
+    
+<script>
+
+
+var letterArray = ["a", "b", "c", "d", "e","f", "g", "h", "i","j", "k", "l", "m", "n","o", "p", "q", "r", "s", "t", "u", "v", "w","x", "z"];
+var inputLetter = "";
+var letterIndex = Math.floor(Math.random()*letterArray.length);
+var guessLetter = letterArray[letterIndex];
+var remaining = 10;
+var blank = []; //testing push
+var wins =0;
+var losses= 0;
+//var guessedLetter = []; // pulling from letter array
+
+    // If the typedLetter matches guessLetter 
+
+
+    var winAlert = function () {
+        alert("You guessed right");
+    }
+    var deductPoint = function () {
+        remaining --;
+        console.log
+    }
+
+    document.onkeyup = function(event) {
+        var inputLetter = event.key.toLowerCase();
+        matchingLetter();
+        //inputLetter.push(guessedLetter);
+        console.log("You typed the letter "+ inputLetter);
+        console.log("Our guess was " + guessLetter);
+        
+       
+       function matchingLetter () {
+        if (inputLetter === guessLetter) {
+            console.log("You matched our guess");
+            //wins ++;
+            //remaining = 10;
+            //guessedLetter = 0;
+            winAlert();
+        }
+
+        else if (remaining === 0) {
+        //remaining = 10;
+        //guessedLetter = 0;
+        console.log("Nope");
+        losses ++;
+        
+
+        deductPoint();
+        }
+    
+    } 
+    document.querySelector("#winCount").innerHTML= wins;
+    document.querySelector("#lossCount").innerHTML= losses;
+    //document.querySelector("#chosenLetters").innerHTML= guessedLetter;
+   // document.querySelector("#lossCount").innerHTML= losses;
+    }//onkeyup bracket
+
+
+    console.log("Guess letter is " + guessLetter);
+</script>
+</body>
+</html>
