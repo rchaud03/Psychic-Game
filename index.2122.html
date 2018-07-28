@@ -1,3 +1,37 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Psychic Game</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
+    <!--<script src="main.js"></script> -->
+    <script src="assets/javascript/game.js"></script>
+</head>
+<body>
+
+    <h1>Psychic Game</h1>
+
+        <div id="Wins">
+            <p> WINS:</p> <p id="winCount">0</p>
+        </div>
+        <br>
+        <div id="Losses">
+            <p> LOSSES:</p> <p id="lossCount">0</p>
+        </div>
+        <br>
+        <div id="remainingdiv">
+                <p id="remainingA"> REMAINING ATTEMPTS:</p> <p id="remainingText">0</p>
+        </div>
+        <br>
+
+        <div id="Chosen">
+                <p id="chosenDiv">CHOSEN LETTERS:   </p>        <p id="chosenText"></p>
+        </div>
+<!--
+<script>
+
 //var letterArray = ["q", "w", "e"]
 var letterArray = ["a", "b", "c", "d", "e","f", "g", "h", "i","j", "k", "l", "m", "n","o", "p", "q", "r", "s", "t", "u", "v", "w","x", "z"];
 var letterIndex = Math.floor(Math.random()*letterArray.length);
@@ -108,3 +142,10 @@ var losses= 0;
         document.querySelector("#lossCount").innerHTML= losses; //writes losses count to HTML
         document.querySelector("#remainingText").innerHTML= remaining; //writes to html when guess is wrong
     }
+
+
+    //console.log("Guess letter is " + guessLetter);
+</script>
+-->
+</body>
+</html>
