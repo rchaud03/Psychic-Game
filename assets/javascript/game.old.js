@@ -3,7 +3,7 @@ var letterArray = ["a", "b", "c", "d", "e","f", "g", "h", "i","j", "k", "l", "m"
 var letterIndex = Math.floor(Math.random()*letterArray.length);
 var guessLetter = letterArray[letterIndex];
 var remaining = 9;
-var wins = 0;
+var wins =0;
 var losses= 0;
 
     
@@ -106,5 +106,5 @@ var losses= 0;
 
         document.querySelector("#winCount").innerHTML= wins; //writes wins count to HTML
         document.querySelector("#lossCount").innerHTML= losses; //writes losses count to HTML
-        document.querySelector("#remainingCount").innerHTML= remaining; //writes to html when guess is wrong
+        document.querySelector("#remainingText").innerHTML= remaining; //writes to html when guess is wrong
     }

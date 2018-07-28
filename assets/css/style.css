@@ -29,6 +29,18 @@ body {
 }
 
 #container {
-    width: 1024px;
+    width: 980px;
     margin: 0 auto;
 }
+
+
+#win1, #loss1 {
+    float: left;
+    width: 50%;
+}
+
+
+#left, #winTitle, #winCount, #lossTitle, #lossCount, #remainingTitle, #remainingCount, #chosenTitle, #titleCount {
+    float: left;
+    width: 25%;
+  }
