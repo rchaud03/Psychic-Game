@@ -1,0 +1,10 @@
+/*#chosenDiv {
+    float: left;
+} */
+#chosenText, #chosenDiv {
+    float: left;
+}
+
+#remainingA, #remainingText {
+    float: left;
+}

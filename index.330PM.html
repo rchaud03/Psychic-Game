@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
     <script src="main.js"></script> -->
 </head>
 <body>
@@ -21,12 +21,12 @@
         </div>
         <br>
         <div id="remainingdiv">
-                <p id="remainingA"> REMAINING ATTEMPTS:</p> <p id="remainingText">0</p>
+                <p> REMAINING ATTEMPTS:</p> <p id="remainingText">0</p>
         </div>
         <br>
 
         <div id="Chosen">
-                <p id="chosenDiv">CHOSEN LETTERS:   </p>        <p id="chosenText"></p>
+                <p id="Chosendiv">CHOSEN LETTERS:</p>        <p id="chosenText"></p>
         </div>
     </div>
 
@@ -36,11 +36,12 @@
 var letterArray = ["a", "b", "c", "d", "e","f", "g", "h", "i","j", "k", "l", "m", "n","o", "p", "q", "r", "s", "t", "u", "v", "w","x", "z"];
 var letterIndex = Math.floor(Math.random()*letterArray.length);
 var guessLetter = letterArray[letterIndex];
-var remaining = 9;
+var remaining = 10;
 var wins =0;
 var losses= 0;
+//var chosenText = [];dddd
 
-    
+
     function randomLetter () {
         letterIndex = Math.floor(Math.random()*letterArray.length);
         guessLetter = letterArray[letterIndex];
@@ -48,10 +49,9 @@ var losses= 0;
     }
 
 
-    // var isLetter = function () {
+    var isLetter = function () {
         
-    // }
-
+    }
     // alerts when there is a MATCH
     var winAlert = function () {
         alert("Your guess was CORRECT!!!");
@@ -72,8 +72,14 @@ var losses= 0;
         wins++;
     }
 
+ //   var resetStats = function () {
+ //       remaining = 10;
+ //       losses = 0;
+ //       wins=0;
+ //       chosenText.innerHTML = "";
+
     var resetRemaining = function () {
-        remaining = 9;
+        remaining = 10;
     }
 
     var resetRecord = function () {
@@ -84,28 +90,16 @@ var losses= 0;
 
     var resetLetters = function () {
         chosenText.innerHTML = "";
+
+
     }
 
-    var lossAlert = function () {
-        alert("10 consecutive incorrect guesses. You LOST!!!");
-        alert("The random letter was " + guessLetter);
-    }
-    //var checkInput = function () {
-    //     if (inputLetter.indexOf(letterArray) >= 0) {
-    //         alert("Please user keys for letters a-z only!");
-
-
-    //     }
-    // } 
-
-     //   checkInput(inputLetter);
-
-    function matchingLetter (inputLetter) {            ///rchaud replaced () with (inputLetter)
+   function matchingLetter (inputLetter) {            ///rchaud jay replaced () with (inputLetter)
         if (inputLetter === guessLetter) {
             console.log("You matched our guess");
             addWin();
-            resetRemaining();
-            resetLetters();
+            remaining = 10;
+            //guessedLetter = 0;
             winAlert();
             randomLetter();
         }
@@ -113,31 +107,39 @@ var losses= 0;
 
         else if (remaining > 1) {
         console.log("The else rule kicked in so NO MATCH!");
+        //addLoss();
         deductPoint();
-        chosenText.innerHTML += " " + inputLetter + " ";          ///rchaud entire line added here you need a way to update the HTML element.
+        //randomLetter();
+        
+        // Here you need a way to update the HTML element.
+        chosenText.innerHTML += " " + inputLetter;          ///rchaud entire line added by Jay
 
         }
 
         else {
-        addLoss();
-        lossAlert();
+        //guessedLetter = 0;
         console.log("The else rule kicked in so NO MATCH!");
-        //addLoss();
+        addLoss();
         deductPoint();
+        alert("10 consecutive incorrect guesses. You LOST!!!");
+        //resetStats();
         randomLetter();
         resetLetters();
-        resetRemaining();
+        resetRecord();
         }
     }
 
     document.onkeyup = function(event) {
         var inputLetter = event.key.toLowerCase();
+        // Passing argument into the function.  Effectively the same thing.
 
-        matchingLetter(inputLetter);      /// rchaud - replaced () with (inputLetter) Passing argument into the function.  Effectively the same thing.
+        matchingLetter(inputLetter);      /// rchaud Jay replaced () with (inputLetter)
+        //inputLetter.push(guessedLetter);
         console.log("You typed the letter "+ inputLetter);
         console.log("Our guess was " + guessLetter);
 
 
+        // Writing to HTML
         document.querySelector("#winCount").innerHTML= wins; //writes wins count to HTML
         document.querySelector("#lossCount").innerHTML= losses; //writes losses count to HTML
         document.querySelector("#remainingText").innerHTML= remaining; //writes to html when guess is wrong

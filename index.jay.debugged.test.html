@@ -1,0 +1,166 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script> -->
+</head>
+<body>
+
+    <h1>Psychic Game</h1>
+    <div id="Score">
+        <div id="Wins">
+            <p> WINS:</p> <p id="winCount">0</p>
+        </div>
+        <br>
+        <div id="Losses">
+            <p> LOSSES:</p> <p id="lossCount">0</p>
+        </div>
+        <br>
+        <div id="remainingdiv">
+                <p> REMAINING ATTEMPTS:</p> <p id="remainingText">0</p>
+        </div>
+        <br>
+
+        <div id="Chosen">
+                <p id="Chosendiv">Chosen</p>        <p id="chosenText">0</p>
+        </div>
+    </div>
+
+<script>
+
+var letterArray = ["m", "b", "n"]
+//var letterArray = ["a", "b", "c", "d", "e","f", "g", "h", "i","j", "k", "l", "m", "n","o", "p", "q", "r", "s", "t", "u", "v", "w","x", "z"];
+//var inputLetter = "";
+var letterIndex = "";
+var guessLetter = "";
+var remaining = 10;
+//var blank = []; //testing push
+var wins =0;
+var losses= 0;
+//var guessedLetter = []; // pulling from letter array
+
+// 
+    function randomLetter () {
+        letterIndex = Math.floor(Math.random()*letterArray.length);
+        guessLetter = letterArray[letterIndex];
+        console.log(guessLetter);
+    }
+
+    // alerts when there is a MATCH
+    var winAlert = function () {
+        alert("Your guess was CORRECT!!!");
+    }
+    // deducts from remaining attempts
+    var deductPoint = function () {
+        remaining --;
+        console.log
+    }
+
+    // adds to loss column
+    var addLoss = function () {
+        losses++;
+    }
+
+    // adds to win column
+    var addWin = function () {
+        wins++;
+    }
+
+    var resetStats = function () {
+        remaining = 10;
+        losses = 0;
+        wins=0;
+    }
+
+   function matchingLetter (inputLetter) {            ///rchaud jay replaced () with (inputLetter)
+        if (inputLetter === guessLetter) {
+            console.log("You matched our guess");
+            addWin();
+            remaining = 10;
+            //guessedLetter = 0;
+            winAlert();
+            randomLetter();
+        }
+
+
+        else if (remaining > 1) {
+        //guessedLetter = 0;
+        console.log("The else rule kicked in so NO MATCH!");
+        addLoss();
+        deductPoint();
+        randomLetter();
+        // Here you need a way to update the HTML element.
+        chosenText.innerHTML += " " + inputLetter;          ///rchaud entire line added by Jay
+
+        }
+
+        else {
+        //guessedLetter = 0;
+        console.log("The else rule kicked in so NO MATCH!");
+        addLoss();
+        deductPoint();
+        alert("10 wrong guesses in a row. You LOST!!!");
+        resetStats();
+        randomLetter();
+        }
+    }
+
+    document.onkeyup = function(event) {
+        var inputLetter = event.key.toLowerCase();
+        // Passing argument into the function.  Effectively the same thing.
+
+        matchingLetter(inputLetter);      /// rchaud Jay replaced () with (inputLetter)
+        //inputLetter.push(guessedLetter);
+        console.log("You typed the letter "+ inputLetter);
+        console.log("Our guess was " + guessLetter);
+
+
+
+/* Moved the function below out of onkey routine and passing argument
+   for improved clarity.
+
+           function matchingLetter () {
+                if (inputLetter === guessLetter) {
+                    console.log("You matched our guess");
+                    addWin();
+                    remaining = 10;
+                    //guessedLetter = 0;
+                    winAlert();
+                }
+
+
+                else if (remaining > 1) {
+                //guessedLetter = 0;
+                console.log("The else rule kicked in so NO MATCH!");
+                addLoss();
+                deductPoint();
+                }
+
+                else {
+                //guessedLetter = 0;
+                console.log("The else rule kicked in so NO MATCH!");
+                addLoss();
+                deductPoint();
+                alert("10 wrong guesses in a row. You LOST!!!");
+                resetStats();
+                }
+
+
+            }
+
+*/
+        document.querySelector("#winCount").innerHTML= wins; //writes wins count to HTML
+        document.querySelector("#lossCount").innerHTML= losses; //writes losses count to HTML
+        //document.querySelector("#chosenLetters").innerHTML= guessedLetter;
+        document.querySelector("#remainingText").innerHTML= remaining; //writes to html when guess is wrong
+    }//onkeyup bracket
+
+
+   // console.log("Guess letter is " + guessLetter);
+</script>
+</body>
+</html>
