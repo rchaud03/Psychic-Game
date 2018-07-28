@@ -7,4 +7,28 @@
 
 #remainingA, #remainingText {
     float: left;
+} */
+
+h1 {
+    background-color: black;
+    margin: 0;
+    text-align: center;
+    color: #efeee7;
+    padding-top: 20px;
+    padding-bottom: 2-px;
+    font-size: 28px;
+
+}
+
+body {
+    background-color: #efeee7;
+    margin: 0;
+    font-family: :Georgia, 'Times New Roman', Times, serif;
+    font-size: 18px;
+    line-height: 150%;
+}
+
+#container {
+    width: 1024px;
+    margin: 0 auto;
 }
